@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+  <title>sample music player</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="border"></div>
+    <div class="content">
+      <div class="menu">
+        <p></p>
+        <p></p>
+        <p></p>
+      </div>
+
+      <div class="card">
+        <div class="card-img-provider">
+          <img src="./imgs/img.jpg" alt="music-img">
+        </div>
+
+        <div class="card-info-provider">
+          <div class="card-name">clocks</div>
+          <div class="card-artist">Coldplay</div>
+        </div>
+
+        <div class="progress-bar-provider">
+          <span class="time-bar time-start">00:00</span>
+          <div class="progress-bar">
+            <span class="point"></span>
+          </div>
+          <span class="time-bar time-total">05:00</span>
+        </div>
+
+        <div class="action-provdider">
+          <div class="btn-wrapper">
+            <button class="btn btn-prev">
+              <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 18L5 6M19 6V18L9 12L19 6Z" stroke="#efefefef" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            <button class="btn btn-play">
+              <svg fill="#efefefef" height="20px" width="20px" version="1.1" id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 460.114 460.114" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M393.538,203.629L102.557,5.543c-9.793-6.666-22.468-7.372-32.94-1.832c-10.472,5.538-17.022,16.413-17.022,28.26v396.173
+			                c0,11.846,6.55,22.721,17.022,28.26c10.471,5.539,23.147,4.834,32.94-1.832l290.981-198.087
+			                c8.746-5.954,13.98-15.848,13.98-26.428C407.519,219.477,402.285,209.582,393.538,203.629z"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </button>
+
+            <button class="btn btn-pause">
+              <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.1"
+                  d="M14 19L14 5C14 3.89543 14.8954 3 16 3L17 3C18.1046 3 19 3.89543 19 5L19 19C19 20.1046 18.1046 21 17 21L16 21C14.8954 21 14 20.1046 14 19Z"
+                  fill="#efefefef" />
+                <path opacity="0.1"
+                  d="M10 19L10 5C10 3.89543 9.10457 3 8 3L7 3C5.89543 3 5 3.89543 5 5L5 19C5 20.1046 5.89543 21 7 21L8 21C9.10457 21 10 20.1046 10 19Z"
+                  fill="#efefefef" />
+                <path
+                  d="M14 19L14 5C14 3.89543 14.8954 3 16 3L17 3C18.1046 3 19 3.89543 19 5L19 19C19 20.1046 18.1046 21 17 21L16 21C14.8954 21 14 20.1046 14 19Z"
+                  stroke="#efefefef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                  d="M10 19L10 5C10 3.89543 9.10457 3 8 3L7 3C5.89543 3 5 3.89543 5 5L5 19C5 20.1046 5.89543 21 7 21L8 21C9.10457 21 10 20.1046 10 19Z"
+                  stroke="#efefefef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            <button class="btn btn-next">
+              <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 6V18M5 18L5 6L15 12L5 18Z" stroke="#efefefef" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            <button class="btn mute-btn">
+              <svg class="volume-high-icon" viewBox="0 0 24 24" width="20px" height="20px">
+                <path fill="currentColor"
+                  d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+              </svg>
+            </button>
+
+            <div class="volume-wrapper volume-high-icon">
+
+              <svg class="volume-high-icon" viewBox="0 0 24 24" width="20px" height="20px">
+                <path fill="currentColor"
+                  d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+              </svg>
+
+              <svg class="volume-low-icon" viewBox="0 0 24 24" width="20px" height="20px">
+                <path fill="currentColor"
+                  d="M5,9V15H9L14,20V4L9,9M18.5,12C18.5,10.23 17.5,8.71 16,7.97V16C17.5,15.29 18.5,13.76 18.5,12Z" />
+              </svg>
+
+              <svg class="volume-muted-icon" viewBox="0 0 24 24" width="20px" height="20px">
+                <path fill="currentColor"
+                  d="M12,4L9.91,6.09L12,8.18M4.27,3L3,4.27L7.73,9H3V15H7L12,20V13.27L16.25,17.53C15.58,18.04 14.83,18.46 14,18.7V20.77C15.38,20.45 16.63,19.82 17.68,18.96L19.73,21L21,19.73L12,10.73M19,12C19,12.94 18.8,13.82 18.46,14.64L19.97,16.15C20.62,14.91 21,13.5 21,12C21,7.72 18,4.14 14,3.23V5.29C16.89,6.15 19,8.83 19,12M16.5,12C16.5,10.23 15.5,8.71 14,7.97V10.18L16.45,12.63C16.5,12.43 16.5,12.21 16.5,12Z" />
+              </svg>
+
+              <div class="volume-progress-bar">
+                <span class="volume-point"></span>
+                <span class="volume-bar"></span>
+              </div>
+
+              <span class="volume">100</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-container"></div>
+  </div>
+</body>
+
+</html>

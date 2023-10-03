@@ -1,0 +1,404 @@
+*
+{
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+:root
+{
+  --bg-color: #121212;
+  --primary-color: #211d20;
+  --color: #f1f1f1f1;
+  --border-container: #2b2b2b;
+  --hover-color-effect: crimson;
+  --progress-bar: #f1f1f148;
+}
+
+body
+{
+  padding: 0;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--color);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+}
+
+button
+{
+  all: unset;
+}
+
+.action-provdider
+{
+  width: 100%;
+}
+
+.btn-wrapper
+{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+.btn-wrapper .btn-pause
+{
+  display: none;
+
+}
+
+.btn-wrapper.play .btn-pause
+{
+  display: flex;
+}
+
+.btn-wrapper.play .btn-play
+{
+  display: none;
+}
+
+.btn
+{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #302a2e;
+  border-radius: 50%;
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+}
+
+.mute-btn
+{
+  margin-left: auto;
+}
+
+.btn:hover
+{
+  background-color: var(--hover-color-effect);
+}
+
+.container
+{
+  width: 440px;
+  height: 400px;
+  background-color: var(--border-container);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.container:hover .border::after
+{
+  opacity: 1 !important;
+}
+
+.border
+{
+  width: 100%;
+  height: 100%;
+
+  border-radius: inherit;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  opacity: 1;
+}
+
+.border::after
+{
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  background: radial-gradient(500px circle at var(--mouse-x) var(--mouse-y),
+      var(--hover-color-effect),
+      transparent 40%);
+
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.content
+{
+  width: calc(100% - 2px) !important;
+  height: calc(100% - 2px) !important;
+  background-color: var(--primary-color);
+  border-radius: inherit;
+
+  margin: 1px;
+  padding: 5px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  z-index: 3;
+}
+
+.menu
+{
+  width: max-content;
+
+  padding: 5px;
+  border-radius: inherit;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s;
+}
+
+.menu:hover
+{
+  background-color: #302a2e;
+}
+
+.menu>p
+{
+  width: 30px;
+  height: 3px;
+  background-color: var(--color);
+
+  margin: 3px;
+}
+
+.menu>p:nth-of-type(1)
+{
+  width: 50%;
+}
+
+.menu>p:nth-last-of-type(1)
+{
+  width: 30%;
+}
+
+.card
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-img-provider
+{
+  width: 50%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card-img-provider img
+{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.card-info-provider
+{
+  text-align: center;
+}
+
+.card-info-provider>.card-name
+{
+  margin-block: 5px;
+}
+
+/* 
+  progress bar
+*/
+.progress-bar-provider
+{
+  width: 95%;
+  height: 30px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 20px;
+  position: relative;
+}
+
+.progress-bar
+{
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  position: relative;
+  background-color: var(--progress-bar);
+
+  cursor: pointer;
+}
+
+.progress-bar:hover
+{
+  height: 10px;
+}
+
+.progress-bar.scrubbing
+{
+  height: 10px;
+}
+
+.progress-bar>span.point
+{
+  position: absolute;
+  left: 0;
+  top: -50%;
+  margin-left: calc(var(--progress-x) - 9px);
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--hover-color-effect);
+  /* pointer-events: none; */
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.progress-bar:hover span.point
+{
+  opacity: 1;
+}
+
+.progress-bar-provider .point.scrubbing
+{
+  opacity: 1;
+}
+
+.progress-bar-provider>span.time-bar
+{
+  font-size: 0.8em;
+}
+
+.progress-bar::before
+{
+  content: "";
+  width: var(--progress-x);
+  height: inherit;
+  background-color: var(--hover-color-effect);
+  border-radius: inherit;
+  position: absolute;
+}
+
+/* 
+  volume
+*/
+.volume-wrapper
+{
+  position: absolute;
+  right: 10px;
+  bottom: 14%;
+  width: 200px;
+  padding: 10px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--progress-bar);
+  border-radius: 10px;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition:  all 0.3s;
+}
+
+.volume-wrapper.show
+{
+  opacity: 1;
+  visibility: visible;
+  bottom: 15%;
+}
+
+.volume-wrapper> span
+{
+  font-size: 12px;
+}
+
+.volume-progress-bar
+{
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  position: relative;
+  background-color: var(--progress-bar);
+
+  cursor: pointer;
+}
+
+.volume-progress-bar>span.volume-point
+{
+  position: absolute;
+  left: 0%;
+  top: -50%;
+  margin-left: calc(var(--volume-x) - 5px);
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--hover-color-effect);
+  /* pointer-events: none; */
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.volume-progress-bar:hover span.volume-point
+{
+  opacity: 1;
+}
+
+.volume-progress-bar.scrubbing span.volume-point
+{
+  opacity: 1;
+}
+
+
+.volume-bar 
+{
+  content: "";
+  width: var(--volume-x);
+  height: inherit;
+  background-color: var(--hover-color-effect);
+  border-radius: inherit;
+  position: absolute;
+  left: 0;
+}
+
+
+.volume-wrapper > svg
+{
+  display: none;
+}
+
+.volume-wrapper.volume-high-icon > svg.volume-high-icon
+{
+  display: block;
+}
+.volume-wrapper.volume-low-icon > svg.volume-low-icon
+{
+  display: block;
+}
+.volume-wrapper.volume-muted-icon > svg.volume-muted-icon
+{
+  display: block;
+}
