@@ -100,7 +100,7 @@ container.onmousemove = handleHoverEffect;
 */
 const handleProgressBar = (evt) =>
 {
-  // return true whene user hold right click
+  // return true when user hold right click
   isScrubbing = (evt.buttons & 1) == 1;
   /**
    * simulate mouseEnter and mouseLeave events but runs just for once 
@@ -164,7 +164,7 @@ volumeBar.style.setProperty("--volume-x", `${100}%`);
 
 function handleVolumeBarMouseMove(evt)
 {
-  //* return true whene user hold right click
+  //* return true when user hold right click
   isVolumeScrubbing = (evt.buttons & 1) == 1;
   //* simulate mouseEnter and mouseLeave events but runs just for once 
   if(isVolumeScrubbing)
