@@ -225,7 +225,7 @@ audio.onvolumechange = () =>
 {
   if(audio.volume >= 0.5) volumeWrapper.className = "volume-wrapper volume-high-icon show"
   if(audio.volume <= 0.5) volumeWrapper.className = "volume-wrapper volume-low-icon show";
-  if(audio.volume == 0) volumeWrapper.className = "volume-wrapper volume-muted-icon show";
+  if(audio.volume <= 0.01) volumeWrapper.className = "volume-wrapper volume-muted-icon show";
 }
 
 // helper
